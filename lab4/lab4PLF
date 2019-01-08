@@ -1,0 +1,23 @@
+${
+	****** Headers, declaraciones, variables, funciones, etc. ******
+
+#include <stdio.h>
+#include ".h"
+void mostrarError();
+%}
+
+******* Expresiones regulares ********
+numbers ([0-9])+
+
+%%
+******* tokens *******
+"hello"      {return (STRING);}
+{numbers}    {return (NUM);}
+";"			 {return (SEMICOLON);}
+.			 {mostrarError(); return(OTHER);}
+%%
+
+******* funciones de C *******
+void mostrarError(){
+	printf("Other input");
+}
